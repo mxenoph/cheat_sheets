@@ -64,7 +64,7 @@ Values assigned to variables with \texttt{=} are expanded when used (like a refe
 
 \sectionspace
 \section{Includes}
-\noindent For large projects use several makefiles and use the command \texttt{include} to call them within your 'master' makefile. Use \texttt{-include} \args{Makefile(s)} if you don't want \texttt{make} to abort when the included Makefile's missing. The minus sign generally forces \texttt{make} to ignore errors.
+\noindent For large projects use several makefiles and use the command \texttt{include} to call them within your `master' makefile. Use \texttt{-include} \args{Makefile(s)} if you don't want \texttt{make} to abort when the included Makefiles are missing. The minus sign generally forces \texttt{make} to ignore errors.
 %
 \sectionspace
 \section{Functions}
@@ -80,7 +80,7 @@ Values assigned to variables with \texttt{=} are expanded when used (like a refe
 \$(sort \args{list})	& Sorts the words in \args{list} lexicographically, removing duplicates.\\
 \$(dir \args{names\ldots})	& Extracts the directory-part of each file name in \args{names}.\\
 \$(notdir \args{names\ldots}) &	Extracts the non-directory part of each file name in \args{names}.\\
-\$(realpath \args{names\ldots}) & Returns an absolute name (does not contain ``. or .. or symlinks'' for each file name in \args{names}.\\
+\$(realpath \args{names\ldots}) & Returns an absolute name (does not contain ``\texttt{.}'', ``\texttt{..}'' or symlinks) for each file name in \args{names}.\\
 \$(suffix \args{names\ldots})	& Extracts the suffix (everything starting with the last period) of each file name in \args{names}.\\
 \$(basename \args{names\ldots}) & Extracts all but the suffix of each file name in \args{names}. \\
 \$(addsuffix \args{suffix},\args{names\ldots}) & 	Appends \args{suffix} to each word in \args{names}.\\
@@ -90,13 +90,13 @@ Values assigned to variables with \texttt{=} are expanded when used (like a refe
 \$(words \args{text})	 & Counts the number of words in \args{text}.\\
 \$(wordlist \args{i},\args{j},\args{text}) & Returns the list of words in \args{text} from \args{i} to \args{j}.\\
 \$(firstword \args{names\ldots}) & Extracts the first word in \args{names}.\\
-\$(wildcard \args{pattern\ldots}) & Returns the file names matching (a shell file name) \args{pattern} (not a ``\%'' pattern).\\
+\$(wildcard \args{pattern\ldots}) & Returns the file names matching (a shell file name) \args{pattern} (not a ``\texttt{\%}'' pattern).\\
 \$(error \args{text\ldots}) & When the function is evaluated a fatal error with the message \args{text} is generated.\\
 \$(warning \args{text\ldots}) & When the function is evaluated a warning with the message \args{text} is generated.\\
 \$(shell \args{command}) & Execute a shell command and return its output.\\
 \$(origin \args{variable}) & Describes where \args{variable} came from. Do not use ``\texttt{\$}''  or parentheses around \args{variable} unless you want the name not to be constant and provide a variable reference.\\
 \$(foreach \args{var},\args{words},\args{text}) & Evaluate \args{text} with \args{var} bound to each word in \args{words}, and concatenate the results.\\
-\$(call \args{var},\args{param},\args{param},\args{\ldots}) & Evaluate \args{var} replacing any references to \texttt{\$(1)},\texttt{\$(2)} with the first, second, etc. \args{param} values.\\
+\$(call \args{var},\args{param},\args{param},\args{\ldots}) & Evaluate \args{var} replacing any references to \texttt{\$(1)}, \texttt{\$(2)} with the first, second, etc. \args{param} values.\\
 %
 \end{tabular}
 %
