@@ -75,31 +75,31 @@ Values assigned to variables with \texttt{=} are expanded when used (like a refe
 \$(patsubst \args{pattern},\args{replacement},\args{text}) & Replaces words matching \args{pattern} with \args{replacement} in \args{text}.\\
 \$(strip \args{string}) & 	Removes excess whitespace characters from \args{string}.\\
 \$(findstring \args{find},\args{in})	& Search \args{in} for an occurrence of \args{find}.\\
-\$(filter \args{pattern\_1} \args{pattern\_2...},\args{text})	& Selects words in \args{text} that match one of the \args{pattern} words.\\
-\$(filter-out \args{pattern\_1} \args{pattern\_2...},\args{text}) & Selects words in text that do not match any of the pattern words.\\
+\$(filter \args{pattern\_1} \args{pattern\_2\ldots},\args{text})	& Selects words in \args{text} that match one of the \args{pattern} words.\\
+\$(filter-out \args{pattern\_1} \args{pattern\_2\ldots},\args{text}) & Selects words in text that do not match any of the pattern words.\\
 \$(sort \args{list})	& Sorts the words in \args{list} lexicographically, removing duplicates.\\
-\$(dir \args{names...})	& Extracts the directory-part of each file name in \args{names}.\\
-\$(notdir \args{names...}) &	Extracts the non-directory part of each file name in \args{names}.\\
-\$(realpath \args{names…}) & Returns an absolute name (does not contain ``. or .. or symlinks'' for each file name in \args{names}.\\
-\$(suffix \args{names...})	& Extracts the suffix (everything starting with the last period) of each file name in \args{names}.\\
-\$(basename \args{names...}) & Extracts all but the suffix of each file name in \args{names}. \\
-\$(addsuffix \args{suffix},\args{names...}) & 	Appends \args{suffix} to each word in \args{names}.\\
-\$(addprefix \args{prefix},\args{names...}) & Prepends \args{prefix} to each word in \args{names}.\\
+\$(dir \args{names\ldots})	& Extracts the directory-part of each file name in \args{names}.\\
+\$(notdir \args{names\ldots}) &	Extracts the non-directory part of each file name in \args{names}.\\
+\$(realpath \args{names\ldots}) & Returns an absolute name (does not contain ``. or .. or symlinks'' for each file name in \args{names}.\\
+\$(suffix \args{names\ldots})	& Extracts the suffix (everything starting with the last period) of each file name in \args{names}.\\
+\$(basename \args{names\ldots}) & Extracts all but the suffix of each file name in \args{names}. \\
+\$(addsuffix \args{suffix},\args{names\ldots}) & 	Appends \args{suffix} to each word in \args{names}.\\
+\$(addprefix \args{prefix},\args{names\ldots}) & Prepends \args{prefix} to each word in \args{names}.\\
 \$(join \args{list\_1},\args{list\_2})	& Join two parallel lists of words.\\
 \$(word \args{n},\args{text}) & Extracts the \args{$n^{th}$} word of \args{text}.\\
 \$(words \args{text})	 & Counts the number of words in \args{text}.\\
 \$(wordlist \args{i},\args{j},\args{text}) & Returns the list of words in \args{text} from \args{i} to \args{j}.\\
-\$(firstword \args{names...}) & Extracts the first word in \args{names}.\\
-\$(wildcard \args{pattern...}) & Returns the file names matching (a shell file name) \args{pattern} (not a ``\%'' pattern).\\
-\$(error \args{text...}) & When the function is evaluated a fatal error with the message \args{text} is generated.\\
-\$(warning \args{text...}) & When the function is evaluated a warning with the message \args{text} is generated.\\
+\$(firstword \args{names\ldots}) & Extracts the first word in \args{names}.\\
+\$(wildcard \args{pattern\ldots}) & Returns the file names matching (a shell file name) \args{pattern} (not a ``\%'' pattern).\\
+\$(error \args{text\ldots}) & When the function is evaluated a fatal error with the message \args{text} is generated.\\
+\$(warning \args{text\ldots}) & When the function is evaluated a warning with the message \args{text} is generated.\\
 \$(shell \args{command}) & Execute a shell command and return its output.\\
 \$(origin \args{variable}) & Describes where \args{variable} came from. Do not use ``\texttt{\$}''  or parentheses around \args{variable} unless you want the name not to be constant and provide a variable reference.\\
 \$(foreach \args{var},\args{words},\args{text}) & Evaluate \args{text} with \args{var} bound to each word in \args{words}, and concatenate the results.\\
-\$(call \args{var},\args{param},\args{param},\args{...}) & Evaluate \args{var} replacing any references to \texttt{\$(1)},\texttt{\$(2)} with the first, second, etc. \args{param} values.\\
+\$(call \args{var},\args{param},\args{param},\args{\ldots}) & Evaluate \args{var} replacing any references to \texttt{\$(1)},\texttt{\$(2)} with the first, second, etc. \args{param} values.\\
 %
 \end{tabular}
 %
-\noindent\let\thefootnote\relax\footnote{Inspired by \href{http://www.schacherer.de/frank/technology/tools/make.html} and \href{https://www.gnu.org/software/make/manual/} \\Created by \href{https://github.com/mxenoph}{\bf Maria Xenophontos} after many valuable comments from \href{https://github.com/klmr}{\bf Konrad Rudolph}}
+\noindent\let\thefootnote\relax\footnote{Inspired by \url{http://www.schacherer.de/frank/technology/tools/make.html} and \url{https://www.gnu.org/software/make/manual/} \\Created by \href{https://github.com/mxenoph}{\bf Maria Xenophontos} after many valuable comments from \href{https://github.com/klmr}{\bf Konrad Rudolph}}
 %
 \end{document}
