@@ -1,0 +1,105 @@
+% Define command to break line inside a table cell
+\newcommand{\specialcell}[2][c]{%
+\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\documentclass[letterpaper]{cheatsheet} % Use US Letter paper, change to a4paper for A4 
+
+\begin{document}
+%
+%----------------------------------------------------------------------------------------
+%	TITLE SECTION
+%----------------------------------------------------------------------------------------
+%
+%\lastupdated % Print the Last Updated text at the top right
+%\copyrights
+\titlesection{GNU Make}{CheatSheet}{ % Your name
+}
+%
+\begin{minipage}[t]{0.66\textwidth}
+\section{Rules}
+Short rules can be written as below\\
+\texttt{target(s): [prerequisites] [; shell-command(s)]}\\
+\texttt{target(s): [prerequisites]}\\
+\texttt{ \hphantom{\texttt{target(s):} }[shell-command]}\\
+\texttt{\%.class: \%.java; javac \$<} \\
+A target pattern is composed of a ``\%''  between a prefix and a suffix, either or both of which may be empty.
+\sectionspace
+%
+\section{Macros/Variables} 
+%
+Values assigned to variables with \texttt{=} are expanded when used (like a reference) while values assigned with \texttt{:=} are expanded at declaration time. 
+\texttt{\$(myvar)} returns the stored value and \texttt{\$(call myvar)} executes the value (like a function).\\ \\
+\begin{tabular}{@{}>{\ttfamily}p{0.3\textwidth}@{}p{0.7\textwidth}@{}}
+\$@	& The name of the target.\\
+\$\%	& The target member name, when the target is an archive member.\\
+\$< & The name of the first (or only) prerequisite.\\
+\$? & Returns a space separated list of all prerequisites newer than than the target.\\
+\$\^{} | \$+ & Returns a space separated list of all prerequisites. \texttt{\$\^{}} omits duplicate prerequisites, while \texttt{\$+} retains them and preserves their order.\\
+\$* & The stem with which an implicit rule matches.\\
+\$(\placeholder D) | \$(\placeholder F) & Returns the path and the file name of a macro. For instance \texttt{\$(@D)} returns the directory-part of \texttt{\$@}.\\
+\end{tabular}
+\sectionspace
+\end{minipage}%
+\hfill%
+\begin{minipage}[t]{0.3\textwidth}
+\section{Built-in target names}
+\begin{tabular}{@{}>{\ttfamily}p{0.3\textwidth}@{}p{0.7\textwidth}@{}}
+.PHONY &  prerequisites of a \texttt{.PHONY} target are never considered to be up to date.\\
+.INTERMEDIATE & {%
+	\newlength\xw
+	\settowidth\xw{\texttt{.INTERMEDIATE}}
+	\addtolength\xw{-0.3\textwidth}
+	\hspace{\xw}}
+	the targets which \texttt{.INTERMEDIATE} depends on are treated as intermediate files and they are deleted once no longer needed for a rule.\\
+.SECONDARY & the targets which \texttt{.SECONDARY} depends on are treated as intermediate files but they are not automatically deleted.\\
+.IGNORE & errors encountered while executing recipes for the prerequisites of \texttt{.IGNORE} are ignored.\\
+.EXPORT\_ALL\_VARIABLES & {%
+	\settowidth\xw{\texttt{.EXPORT\_ALL\_VARIABLES}}
+	\addtolength\xw{-0.3\textwidth}
+	\hspace{\xw}} 
+	allows variables exported in parent Makefile to be available to rules in child processes. It uses no prerequisites.\\
+\end{tabular}
+\sectionspace
+\end{minipage}
+
+\sectionspace
+\section{Includes}
+\noindent For large projects use several makefiles and use the command \texttt{include} to call them within your 'master' makefile. Use \texttt{-include} \args{Makefile(s)} if you don't want \texttt{make} to abort when the included Makefile's missing. The minus sign generally forces \texttt{make} to ignore errors.
+%
+\sectionspace
+\section{Functions}
+\noindent
+%\descript{Text formatting}
+\begin{tabular}{@{}>{\ttfamily}p{0.38\textwidth}@{}p{0.62\textwidth}@{}}
+\$(subst \args{from},\args{to},\args{text})	& Replaces each occurrence of \args{from} in \args{text} by \args{to}\\
+\$(patsubst \args{pattern},\args{replacement},\args{text}) & Replaces words matching \args{pattern} with \args{replacement} in \args{text}.\\
+\$(strip \args{string}) & 	Removes excess whitespace characters from \args{string}.\\
+\$(findstring \args{find},\args{in})	& Search \args{in} for an occurrence of \args{find}.\\
+\$(filter \args{pattern\_1} \args{pattern\_2...},\args{text})	& Selects words in \args{text} that match one of the \args{pattern} words.\\
+\$(filter-out \args{pattern\_1} \args{pattern\_2...},\args{text}) & Selects words in text that do not match any of the pattern words.\\
+\$(sort \args{list})	& Sorts the words in \args{list} lexicographically, removing duplicates.\\
+\$(dir \args{names...})	& Extracts the directory-part of each file name in \args{names}.\\
+\$(notdir \args{names...}) &	Extracts the non-directory part of each file name in \args{names}.\\
+\$(realpath \args{names…}) & Returns an absolute name (does not contain ``. or .. or symlinks'' for each file name in \args{names}.\\
+\$(suffix \args{names...})	& Extracts the suffix (everything starting with the last period) of each file name in \args{names}.\\
+\$(basename \args{names...}) & Extracts all but the suffix of each file name in \args{names}. \\
+\$(addsuffix \args{suffix},\args{names...}) & 	Appends \args{suffix} to each word in \args{names}.\\
+\$(addprefix \args{prefix},\args{names...}) & Prepends \args{prefix} to each word in \args{names}.\\
+\$(join \args{list\_1},\args{list\_2})	& Join two parallel lists of words.\\
+\$(word \args{n},\args{text}) & Extracts the \args{$n^{th}$} word of \args{text}.\\
+\$(words \args{text})	 & Counts the number of words in \args{text}.\\
+\$(wordlist \args{i},\args{j},\args{text}) & Returns the list of words in \args{text} from \args{i} to \args{j}.\\
+\$(firstword \args{names...}) & Extracts the first word in \args{names}.\\
+\$(wildcard \args{pattern...}) & Returns the file names matching (a shell file name) \args{pattern} (not a ``\%'' pattern).\\
+\$(error \args{text...}) & When the function is evaluated a fatal error with the message \args{text} is generated.\\
+\$(warning \args{text...}) & When the function is evaluated a warning with the message \args{text} is generated.\\
+\$(shell \args{command}) & Execute a shell command and return its output.\\
+\$(origin \args{variable}) & Describes where \args{variable} came from. Do not use ``\$''  or parentheses around \args{variable} unless you want the name not to be constant and provide a variable reference.\\
+\$(foreach \args{var},\args{words},\args{text}) & Evaluate \args{text} with \args{var} bound to each word in \args{words}, and concatenate the results.\\
+\$(call \args{var},\args{param},\args{param},\args{...}) & Evaluate \args{var} replacing any references to \$(1),\$(2) with the first, second, etc. \args{param} values.\\
+%
+\end{tabular}
+%
+\noindent\let\thefootnote\relax\footnote{Inspired by \url{http://www.schacherer.de/frank/technology/tools/make.html} and \url{https://www.gnu.org/software/make/manual/} \\Created by \href{https://github.com/mxenoph}{\bf Maria Xenophontos} after many valuable comments from \href{https://github.com/klmr}{\bf Konrad Rudolph}}
+%
+\end{document}
