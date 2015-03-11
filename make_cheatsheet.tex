@@ -12,7 +12,7 @@
 %
 %\lastupdated % Print the Last Updated text at the top right
 %\copyrights
-\titlesection{GNU Make}{CheatSheet}{ % Your name
+\titlesection{GNU Make}{Cheat Sheet}{ % Your name
 }
 %
 \begin{minipage}[t]{0.66\textwidth}
@@ -22,7 +22,7 @@ Short rules can be written as below\\
 \texttt{target(s): [prerequisites]}\\
 \texttt{ \hphantom{\texttt{target(s):} }[shell-command]}\\
 \texttt{\%.class: \%.java; javac \$<} \\
-A target pattern is composed of a ``\%''  between a prefix and a suffix, either or both of which may be empty.
+A target pattern is composed of a ``\texttt{\%}''  between a prefix and a suffix, either or both of which may be empty.
 \sectionspace
 %
 \section{Macros/Variables} 
@@ -33,10 +33,10 @@ Values assigned to variables with \texttt{=} are expanded when used (like a refe
 \$@	& The name of the target.\\
 \$\%	& The target member name, when the target is an archive member.\\
 \$< & The name of the first (or only) prerequisite.\\
-\$? & Returns a space separated list of all prerequisites newer than than the target.\\
-\$\^{} | \$+ & Returns a space separated list of all prerequisites. \texttt{\$\^{}} omits duplicate prerequisites, while \texttt{\$+} retains them and preserves their order.\\
+\$? & Space separated list of all prerequisites newer than than the target.\\
+\$\^{} | \$+ & Space separated list of all prerequisites. \texttt{\$\^{}} omits duplicate prerequisites, while \texttt{\$+} retains them and preserves their order.\\
 \$* & The stem with which an implicit rule matches.\\
-\$(\placeholder D) | \$(\placeholder F) & Returns the path and the file name of a macro. For instance \texttt{\$(@D)} returns the directory-part of \texttt{\$@}.\\
+\$(\placeholder D) | \$(\placeholder F) & The path and the file name of a macro. For instance \texttt{\$(@D)} returns the directory-part of \texttt{\$@}.\\
 \end{tabular}
 \sectionspace
 \end{minipage}%
@@ -94,12 +94,12 @@ Values assigned to variables with \texttt{=} are expanded when used (like a refe
 \$(error \args{text...}) & When the function is evaluated a fatal error with the message \args{text} is generated.\\
 \$(warning \args{text...}) & When the function is evaluated a warning with the message \args{text} is generated.\\
 \$(shell \args{command}) & Execute a shell command and return its output.\\
-\$(origin \args{variable}) & Describes where \args{variable} came from. Do not use ``\$''  or parentheses around \args{variable} unless you want the name not to be constant and provide a variable reference.\\
+\$(origin \args{variable}) & Describes where \args{variable} came from. Do not use ``\texttt{\$}''  or parentheses around \args{variable} unless you want the name not to be constant and provide a variable reference.\\
 \$(foreach \args{var},\args{words},\args{text}) & Evaluate \args{text} with \args{var} bound to each word in \args{words}, and concatenate the results.\\
-\$(call \args{var},\args{param},\args{param},\args{...}) & Evaluate \args{var} replacing any references to \$(1),\$(2) with the first, second, etc. \args{param} values.\\
+\$(call \args{var},\args{param},\args{param},\args{...}) & Evaluate \args{var} replacing any references to \texttt{\$(1)},\texttt{\$(2)} with the first, second, etc. \args{param} values.\\
 %
 \end{tabular}
 %
-\noindent\let\thefootnote\relax\footnote{Inspired by \url{http://www.schacherer.de/frank/technology/tools/make.html} and \url{https://www.gnu.org/software/make/manual/} \\Created by \href{https://github.com/mxenoph}{\bf Maria Xenophontos} after many valuable comments from \href{https://github.com/klmr}{\bf Konrad Rudolph}}
+\noindent\let\thefootnote\relax\footnote{Inspired by \href{http://www.schacherer.de/frank/technology/tools/make.html} and \href{https://www.gnu.org/software/make/manual/} \\Created by \href{https://github.com/mxenoph}{\bf Maria Xenophontos} after many valuable comments from \href{https://github.com/klmr}{\bf Konrad Rudolph}}
 %
 \end{document}
