@@ -12,6 +12,7 @@
 \usepackage{hyperref} % Required for links
 \usepackage{array}
 \usepackage{calc}
+\usepackage{enumitem}
 \usepackage[hang,flushmargin]{footmisc}  %for removing indenntation in footnotes
 
 %----------------------------------------------------------------------------------------

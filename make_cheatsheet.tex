@@ -43,22 +43,13 @@ Values assigned to variables with \texttt{=} are expanded when used (like a refe
 \hfill%
 \begin{minipage}[t]{0.3\textwidth}
 \section{Special built-in target names}
-\begin{tabular}{@{}>{\ttfamily}p{0.3\textwidth}@{}p{0.7\textwidth}@{}}
-.PHONY &  prerequisites of a \texttt{.PHONY} target are never considered to be up to date.\\
-.INTERMEDIATE & {%
-	\newlength\xw
-	\settowidth\xw{\texttt{.INTERMEDIATE}}
-	\addtolength\xw{-0.3\textwidth}
-	\hspace{\xw}}
-	the targets which \texttt{.INTERMEDIATE} depends on are treated as intermediate files and they are deleted once no longer needed for a rule.\\
-.SECONDARY & the targets which \texttt{.SECONDARY} depends on are treated as intermediate files but they are not automatically deleted.\\
-.IGNORE & errors encountered while executing recipes for the prerequisites of \texttt{.IGNORE} are ignored.\\
-.EXPORT\_ALL\_VARIABLES & {%
-	\settowidth\xw{\texttt{.EXPORT\_ALL\_VARIABLES}}
-	\addtolength\xw{-0.3\textwidth}
-	\hspace{\xw}} 
-	allows variables exported in parent Makefile to be available to rules in child processes. It uses no prerequisites.\\
-\end{tabular}
+\begin{description}[font=\ttfamily, itemsep=0pt]
+    \item[.PHONY] prerequisites of a \texttt{.PHONY} target are never considered to be up to date.
+    \item[.INTERMEDIATE] the targets which \texttt{.INTERMEDIATE} depends on are treated as intermediate files and they are deleted once no longer needed for a rule.
+    \item[.SECONDARY] the targets which \texttt{.SECONDARY} depends on are treated as intermediate files but they are not automatically deleted.
+    \item[.IGNORE] errors encountered while executing recipes for the prerequisites of \texttt{.IGNORE} are ignored.
+    \item[.EXPORT\_ALL\_VARIABLES] allows variables exported in parent Makefile to be available to rules in child processes. It uses no prerequisites.
+\end{description}
 \sectionspace
 \end{minipage}
 
