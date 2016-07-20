@@ -83,7 +83,7 @@ Inspired by http://www.schacherer.de/frank/technology/tools/make.html% Last Upda
 \newcommand{\sectionspace}{\vspace{8pt}} % Defines a command to add a set amount of space after sections and subsections
 
 \titleformat{\section}{ % Customize the large section titles
-\color{headings}\scshape\fontspec[Path = fonts/lato/]{Lato-Lig}\fontsize{10pt}{8pt}\selectfont\raggedright\uppercase}{}{0em}{}
+\color{Periwinkle}\scshape\fontspec[Path = fonts/lato/]{Lato-Reg}\fontsize{10pt}{7pt}\selectfont\raggedright\uppercase}{}{0em}{}
 
 \titleformat{\subsection}{ % Customize the subsections and places worked/studied titles
 \color{subheadings}\fontspec[Path = fonts/lato/]{Lato-Bol}\fontsize{8pt}{8pt}\selectfont\bfseries\uppercase}{}{0em}{}
